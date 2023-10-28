@@ -31,7 +31,7 @@ public class AsteroidsGame implements GameScene, ActionListener {
 	public static final int HEIGHT = 800;
 	int score = 0;
 	Random ran = new Random();
-	Game game = new Game("Asteroids");
+	Rocket game = new Rocket("Asteroids");
 	ArrayList<Asteroid> asteroids = new ArrayList<Asteroid>();
 	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	Timer spawner;

@@ -50,6 +50,10 @@ public class Rocket implements GameControlScene {
 	 * constructor.
 	 */
 
+	public Rocket(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void draw(Graphics g) {
 		Graphics2D graphics2D = (Graphics2D) g;
