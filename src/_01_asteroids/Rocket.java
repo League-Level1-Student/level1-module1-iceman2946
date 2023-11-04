@@ -50,9 +50,14 @@ public class Rocket implements GameControlScene {
 	 * constructor.
 	 */
 
-	public Rocket(String string) {
-		// TODO Auto-generated constructor stub
+	public Rocket(int x, int y) {
+		x= AsteroidsGame.WIDTH / 2;
+		y= AsteroidsGame.HEIGHT / 2;
+		size=10;
+		collisionBox= new Rectangle(x - size / 2, y - size / 2, size,size );
 	}
+
+	
 
 	@Override
 	public void draw(Graphics g) {
