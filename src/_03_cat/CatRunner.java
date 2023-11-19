@@ -5,7 +5,7 @@ public class CatRunner {
 		Cat cat= new Cat("Ruby");
 		cat.printName();
 		cat.meow();
-		for(int i=9; i<1; i--) {
+		for(int i=9; i>0; i--) {
 			cat.kill();
 		}
 		}
