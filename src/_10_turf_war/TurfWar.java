@@ -123,7 +123,7 @@ public class TurfWar extends PApplet {
      * Do not initialize them yet.
      */
     Player player1 (34,124,100,Color.red,UP,LEFT,DOWN,RIGHT);
-    Player player2;
+    Player player2 (34,600,100,Color.blue,87,65,83,68);
     
 
     // Do not change these variables
@@ -182,75 +182,80 @@ public class TurfWar extends PApplet {
      * and player 2
      */
 
-//    public void isGameOver() {
-//        if (millis() >= endOfGame && !gameOver) {
-//            gameOver = true;
-//        }
-//    }
-//
-//    public void endGame() {
-//        
-//        String winMessage = "";
-//        
-//        double player1Percentage = calculateRoundedPixelPercentage(player1.pixelCount);
-//        double player2Percentage = calculateRoundedPixelPercentage(player2.pixelCount);
-//        
-//        
-//        if (player1Percentage == player2Percentage) {
-//            winMessage = "TIE";
-//
-//        } else if (player1Percentage > player2Percentage) {
-//            
-//            winMessage = "PLAYER 1 WINS!";
-//            
-//        } else {
-//            winMessage = "PLAYER 2 WINS!";
-//        }
-//        
-//        text(winMessage, (width/2 - (winMessage.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*4);
-//        
-//        noLoop();
-//    }
-//    
-//    public void displayStats() {
-//        
-//        fill(Color.BLACK.getRGB());
-//        rect(0,0, width, 100);
-//        fill(Color.WHITE.getRGB());
-//        textSize(24);
-//        
-//        int gameTimeLeft = (endOfGame / 1000) - (int)(millis() / 1000);
-//        String timerDisplay = "Seconds Left: " + gameTimeLeft;
-//        text(timerDisplay, (width/2 - (timerDisplay.length()*statsBoardSpacing) / 4)  , statsBoardSpacing);
-//        
-//        loadPixels();
-//        player1.countPixels();
-//        player2.countPixels();
-//        
-//        String player1Display = "Player 1 Coverage: " + calculateRoundedPixelPercentage(player1.pixelCount) + "%";
-//        text(player1Display, (width/2 - (player1Display.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*2);
-//        
-//        String player2Display = "Player 2 Coverage: " + calculateRoundedPixelPercentage(player2.pixelCount) + "%";
-//        text(player2Display, (width/2 - (player2Display.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*3);
-//    }
-//    
-//    public double calculateRoundedPixelPercentage(int pixelCount) {
-//        double pixelPercentage = (pixelCount / (double) (width * height - width * statsBoardLine )) * 100;
-//        double pixelsRounded = Math.round(pixelPercentage * 100) / 100.0;
-//        return pixelsRounded;
-//    }
+   public void isGameOver() {
+        if (millis() >= endOfGame && !gameOver) {
+            gameOver = true;
+        }
+    }
+
+   public void endGame() {
+        
+       String winMessage = "";
+       
+       double player1Percentage = calculateRoundedPixelPercentage(player1.pixelCount);
+       double player2Percentage = calculateRoundedPixelPercentage(player2.pixelCount);
+       
+      
+       if (player1Percentage == player2Percentage) {
+            winMessage = "TIE";
+
+       } else if (player1Percentage > player2Percentage) {
+          
+           winMessage = "PLAYER 1 WINS!";
+          
+       } else {
+          winMessage = "PLAYER 2 WINS!";
+      }
+       
+      text(winMessage, (width/2 - (winMessage.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*4);
+      
+     noLoop();
+    }
+   
+   public void displayStats() {
+       
+       fill(Color.BLACK.getRGB());
+       rect(0,0, width, 100);
+       fill(Color.WHITE.getRGB());
+       textSize(24);
+       
+        int gameTimeLeft = (endOfGame / 1000) - (int)(millis() / 1000);
+        String timerDisplay = "Seconds Left: " + gameTimeLeft;
+        text(timerDisplay, (width/2 - (timerDisplay.length()*statsBoardSpacing) / 4)  , statsBoardSpacing);
+        
+        loadPixels();
+        player1.countPixels();
+        player2.countPixels();
+        
+        String player1Display = "Player 1 Coverage: " + calculateRoundedPixelPercentage(player1.pixelCount) + "%";
+        text(player1Display, (width/2 - (player1Display.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*2);
+        
+        String player2Display = "Player 2 Coverage: " + calculateRoundedPixelPercentage(player2.pixelCount) + "%";
+        text(player2Display, (width/2 - (player2Display.length()*statsBoardSpacing) / 4)  , statsBoardSpacing*3);
+    }
+    
+    public double calculateRoundedPixelPercentage(int pixelCount) {
+        double pixelPercentage = (pixelCount / (double) (width * height - width * statsBoardLine )) * 100;
+        double pixelsRounded = Math.round(pixelPercentage * 100) / 100.0;
+        return pixelsRounded;
+    }
 
     @Override
     public void draw() {
         // 10. Call the drawPlayer method for both players.
-        
+        player1.drawPlayer();
+        player2.drawPlayer();
         // 11. Call the update method for both players.
-
+        player1.update();
+        player2.update();
         // 12. Call the isGameOver method.
-        
+        isGameOver();
         // 13. Call the displayStats method.
-
+        displayStats();
         // 14. If gameOver is true call the endGame method.
+        if(gameOver==true) {
+           endGame();
+        }
 
     }
 
@@ -260,7 +265,7 @@ public class TurfWar extends PApplet {
          * 15. Call the enableMovement method for both players and pass keyCode
          * to the method.
          */        
-
+            
     }
 
     @Override
