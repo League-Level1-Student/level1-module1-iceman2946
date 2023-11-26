@@ -61,8 +61,10 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
      * Create your hippo objects here. The "left" input parameter indicates
      * which side the hippo is drawn.
      */
-    Hippo myHippoObject = new Hippo("left");
-
+    Hippo myHippoObject = new Hippo("left","Bob",Color.red);
+    Hippo hippoObject = new Hippo("right", "Jake",Color.blue);
+    Hippo objectHippo= new Hippo("down","Robert",Color.green);
+    Hippo hippObject= new Hippo("up", "Joe", Color.gray);
     public HungryHungryHippos() {
         gameFrame.setScene(this);
         gameFrame.start();
@@ -97,6 +99,9 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
          * Draw all the hippos here
          */
         myHippoObject.draw(g);
+        hippoObject.draw(g);
+        objectHippo.draw(g);
+        hippObject.draw(g);
         
         if (startGame) {
             /*
@@ -110,6 +115,9 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
              * this for all of your hippos!
              */
             checkHippoEating(myHippoObject);
+            checkHippoEating(hippoObject);
+            checkHippoEating(objectHippo);
+            checkHippoEating(hippObject);
         }
     }
 
@@ -125,11 +133,11 @@ public class HungryHungryHippos implements GameScene, GameControlScene {
         } else if (keyCode == KeyEvent.VK_1) {
             myHippoObject.eat();
         } else if (keyCode == KeyEvent.VK_2) {
-            
+            hippoObject.eat();
         } else if (keyCode == KeyEvent.VK_3) {
-            
+            objectHippo.eat();
         } else if (keyCode == KeyEvent.VK_4) {
-            
+            hippObject.eat();
         }
     }
     

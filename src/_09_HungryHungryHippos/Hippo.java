@@ -12,12 +12,16 @@ public class Hippo {
     String location;
     int startNeckSpeed = 15;
     int neckMoveDistance = 100;
+    String hippoName;
+    Color hippoColor;
 
     /*
      * Constructor
      */
-    public Hippo(String location) {
+    public Hippo(String location, String hippoName, Color hippoColor) {
         this.location = location;
+        this.hippoName= hippoName;
+        this.hippoColor= hippoColor;
         
         setupPosition();
     }
@@ -26,17 +30,16 @@ public class Hippo {
         /*
          * Local variables
          */
-        Color bodyColor = Color.GRAY;
-        String hippoName = "Hippie Hippo";
+
         
         drawScore(g, hippoName);
         
         // Body
-        g.setColor(bodyColor);
+        g.setColor(hippoColor);
         g.fillOval(x, y, width, height);
 
         // Neck
-        g.setColor(bodyColor);
+        g.setColor(hippoColor);
         g.fillRect(neckX, neckY, neckLength, neckWidth);
         
         // Teeth (draw before head)
@@ -45,7 +48,7 @@ public class Hippo {
         g.fillRect(teethX2, teethY2, teethLength, teethWidth);
 
         // Ears (draw before head)
-        g.setColor(bodyColor);
+        g.setColor(hippoColor);
         g.fillOval(earX, earY, earLength, earLength);
         g.fillOval(earX2, earY2, earLength, earLength);
         g.setColor(Color.WHITE);
@@ -53,7 +56,7 @@ public class Hippo {
         g.fillOval(earX2, earY2, earLength - 10, earLength - 10);
 
         // Head
-        g.setColor(bodyColor);
+        g.setColor(hippoColor);
         g.fillOval(headX, headY, headWidth, headLength - 20);
         g.fillOval(headX2, headY2, headWidth + 20, headLength);
 

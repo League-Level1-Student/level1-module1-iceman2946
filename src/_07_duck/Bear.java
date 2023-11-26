@@ -16,7 +16,7 @@ public class Bear {
 		System.out.println("Haaaaaaaaaa");
 	}
 	void run () {
-		System.out.println("RUNNNN!"));
+		System.out.println("RUNNNN!");
 	}
 
 }

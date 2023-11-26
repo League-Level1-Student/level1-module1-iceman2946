@@ -10,13 +10,13 @@ public class Planet {
      * Member variables
      */
     int x, y, width, height;
-    double diameter;
+    int diameter;
     Color planetColor;
     int distanceFromSun;
     int orbitalPeriod;
     
     
-    public Planet(double diameterPixels, Color planetColor, int distanceFromSun, int orbitalPeriod) {
+    public Planet(int diameterPixels, Color planetColor, int distanceFromSun, int orbitalPeriod) {
         this.diameter = diameterPixels;
         this.planetColor= planetColor;
         this.distanceFromSun= distanceFromSun;
@@ -28,7 +28,7 @@ public class Planet {
          * Local variables
          * Reassign or remove these after creating the correct member variables
          */
-    	int distance=distanceFromSun/10000;
+    	int distance=distanceFromSun/100000;
            // You can choose a different scaling than divided by 10
 
         
@@ -79,7 +79,8 @@ public class Planet {
     
     class Moon {
         Color moonColor;
-        int numMoons, moonDiameter, distPlanetToMoon, moonDaysToOrbit, daysOffset;
+        int numMoons, moonDiameter, moonDaysToOrbit, daysOffset;
+		int distPlanetToMoon;
         
         public Moon() {
             Random rand = new Random();
