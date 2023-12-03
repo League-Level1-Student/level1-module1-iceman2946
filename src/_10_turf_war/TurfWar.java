@@ -24,15 +24,21 @@ public class TurfWar extends PApplet {
         	this.speed=speed;
         	this.playerColor=playerColor;
         	this.playerSize=playerSize;
+        	this.x=x;
+        	this.y=y;
+        	this.upKey=upKey;
+        	this.downKey=downKey;
+        	this.leftKey=leftKey;
+        	this.rightKey= rightKey;   	
         }
         /*
          * The member variables below do not need to be initialized in the
          * constructor.
          */
-        boolean moveUp = false;
-        boolean moveDown = false;
-        boolean moveLeft = false;
-        boolean moveRight = false;
+        boolean moveUp = true;
+        boolean moveDown = true;
+        boolean moveLeft = true;
+        boolean moveRight = true;
         int pixelCount = 0;
 
         void drawPlayer() {
@@ -68,10 +74,10 @@ public class TurfWar extends PApplet {
             	y+=speed;
             }
             if(moveRight) {
-            	y+=speed;
+            	y=speed;
             }
             if(moveLeft) {
-            	y-= speed;
+            	y=speed;
             }
         }
 
@@ -122,8 +128,8 @@ public class TurfWar extends PApplet {
      * 4. Declare two variables of the Player class called player1 and player2.
      * Do not initialize them yet.
      */
-    Player player1 (34,124,100,Color.red,UP,LEFT,DOWN,RIGHT);
-    Player player2 (34,600,100,Color.blue,87,65,83,68);
+    Player player1 = new Player(34,200,100,50,Color.RED.getRGB(),UP,LEFT,DOWN,RIGHT);
+    Player player2 = new Player (34,400,100,50,Color.BLUE.getRGB(),87,65,83,68);
     
 
     // Do not change these variables
@@ -265,7 +271,12 @@ public class TurfWar extends PApplet {
          * 15. Call the enableMovement method for both players and pass keyCode
          * to the method.
          */        
-            
+            player1.enableMovement(LEFT); 
+            player2.enableMovement(A);
+            player1.enableMovement(DOWN);
+            player2.enableMovement(S);
+            player1.enableMovement(RIGHT);
+            player2.enableMovement(D);
     }
 
     @Override
@@ -273,7 +284,8 @@ public class TurfWar extends PApplet {
         /*
          * 16. Call the disableMovement method for both players and pass keyCode
          * to the method.
-         */
+         */player1.disableMovement(W);
+           player2.disableMovement(W);
 
     }
 
