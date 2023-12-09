@@ -11,20 +11,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class BinaryConverter implements ActionListener {
-	
+	JButton button= new JButton();
+	JTextField text= new JTextField(20);
 	public void ShowButton() {
 		System.out.println("Button clicked");
 		JFrame frame= new JFrame("Convert 8 bits of binary to ASCII");
 		frame.setVisible(true);
 		JPanel panel= new JPanel();
 		frame.add(panel);
-		JButton button= new JButton();
 		button.addActionListener(this);
 		panel.add(button);
-		JTextField answer= new JTextField(20);
 		JLabel label= new JLabel("convert");
 		button.add(label);
-		
+		panel.add(text);
+		frame.pack();
 		
 		
 
@@ -52,7 +52,11 @@ public class BinaryConverter implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		convert(answer.getText());
+		JButton buttonPressed = (JButton) arg0.getSource();
+		if(buttonPressed==button) {
+			String answer = text.getText();
+			convert(answer);
+		}
 		
 		
 	}
